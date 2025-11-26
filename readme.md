@@ -6,7 +6,13 @@ it's simple.
 
 ## to install
 
-copy `justfile`, `squads.just`, `hacks/` into the repo that you are working with
+copy `justfile`, `squads.just`, `hacks/squads` into the repo that you are working with
+
+## to upgrade
+
+```bash
+just squads upgrade
+```
 
 ## to use
 
