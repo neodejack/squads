@@ -3,3 +3,6 @@ list:
 
 init:
   @hacks/squads_init.py
+
+todo todo_name:
+  @hacks/squads_todo.py "{{todo_name}}"
