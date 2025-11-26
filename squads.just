@@ -6,6 +6,7 @@ init:
 
 todo todo_name:
   @hacks/squads/todo.py "{{todo_name}}"
+  @echo "§{{todo_name}}" | pbcopy
 
 upgrade:
   curl -fsSL https://raw.githubusercontent.com/neodejack/squads/main/upgrade.sh | bash
