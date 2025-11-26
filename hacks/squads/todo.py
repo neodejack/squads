@@ -10,7 +10,7 @@ if len(sys.argv) < 2:
 todo_name = sys.argv[1]
 
 # Create the file path
-todo_dir = Path(__file__).parent.parent / "squads" / "todo"
+todo_dir = Path(__file__).parent.parent.parent / "squads" / "todo"
 file_name = f"§{todo_name}.md"
 file_path = todo_dir / file_name
 
