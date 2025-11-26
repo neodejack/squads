@@ -71,24 +71,14 @@ check_dependencies() {
 
 # Clone repository
 clone_repo() {
-  print_message "$BLUE" "Cloning latest squads repository..."
-
   TEMP_DIR=$(mktemp -d)
 
   if git clone --quiet --depth 1 --branch "$GITHUB_BRANCH" "$GITHUB_REPO" "$TEMP_DIR" 2>/dev/null; then
-    print_message "$GREEN" "  ✓ Repository cloned successfully"
+    echo ""
   else
     print_message "$RED" "  ✗ Failed to clone repository"
-    print_message "$RED" "  Repository: $GITHUB_REPO"
-    print_message "$YELLOW" ""
-    print_message "$YELLOW" "This could mean:"
-    print_message "$YELLOW" "  - The repository is private (requires authentication)"
-    print_message "$YELLOW" "  - Network connectivity issues"
-    print_message "$YELLOW" "  - The branch '$GITHUB_BRANCH' doesn't exist"
     exit 1
   fi
-
-  echo ""
 }
 
 # Discover files to upgrade
