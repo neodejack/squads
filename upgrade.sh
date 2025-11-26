@@ -172,7 +172,7 @@ show_changes() {
 # Prompt for confirmation
 confirm_upgrade() {
   echo -n "Do you want to proceed with the upgrade? (y/N): "
-  read -r response
+  read -r response </dev/tty
 
   if [[ ! "$response" =~ ^[Yy]$ ]]; then
     print_message "$YELLOW" "Upgrade cancelled"
