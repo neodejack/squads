@@ -74,7 +74,6 @@ clone_repo() {
   TEMP_DIR=$(mktemp -d)
 
   if git clone --quiet --depth 1 --branch "$GITHUB_BRANCH" "$GITHUB_REPO" "$TEMP_DIR" 2>/dev/null; then
-    echo ""
   else
     print_message "$RED" "  ✗ Failed to clone repository"
     exit 1
@@ -215,7 +214,6 @@ install_files() {
 main() {
   print_message "$BLUE" "Squads Upgrade Script"
   print_message "$BLUE" "===================="
-  echo ""
 
   check_dependencies
   check_squads_repo
