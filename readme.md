@@ -14,6 +14,12 @@ copy `justfile`, `squads.just`, `hacks/squads` into the repo that you are workin
 just squads upgrade
 ```
 
+Or directly with curl:
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/neodejack/squads/main/upgrade.sh)
+```
+
 ## to use
 
 ```bash

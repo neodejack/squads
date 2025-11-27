@@ -12,4 +12,5 @@ done todo_name:
   @hacks/squads/done.py "{{todo_name}}"
 
 upgrade:
-  curl -fsSL https://raw.githubusercontent.com/neodejack/squads/main/upgrade.sh | bash
+  #!/usr/bin/env bash
+  bash <(curl -fsSL https://raw.githubusercontent.com/neodejack/squads/main/upgrade.sh)
