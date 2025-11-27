@@ -73,8 +73,7 @@ check_dependencies() {
 clone_repo() {
   TEMP_DIR=$(mktemp -d)
 
-  if git clone --quiet --depth 1 --branch "$GITHUB_BRANCH" "$GITHUB_REPO" "$TEMP_DIR" 2>/dev/null; then
-  else
+  if ! git clone --quiet --depth 1 --branch "$GITHUB_BRANCH" "$GITHUB_REPO" "$TEMP_DIR" 2>/dev/null; then
     print_message "$RED" "  ✗ Failed to clone repository"
     exit 1
   fi
@@ -171,12 +170,18 @@ show_changes() {
 
 # Prompt for confirmation
 confirm_upgrade() {
-  echo -n "Do you want to proceed with the upgrade? (y/N): "
-  read -r response </dev/tty
+  # Check if running in interactive mode
+  if [ -t 0 ] && [ -t 1 ]; then
+    echo -n "Do you want to proceed with the upgrade? (y/N): "
+    read -r response
 
-  if [[ ! "$response" =~ ^[Yy]$ ]]; then
-    print_message "$YELLOW" "Upgrade cancelled"
-    exit 0
+    if [[ ! "$response" =~ ^[Yy]$ ]]; then
+      print_message "$YELLOW" "Upgrade cancelled"
+      exit 0
+    fi
+  else
+    # Non-interactive mode: auto-confirm
+    print_message "$YELLOW" "Running in non-interactive mode, auto-confirming upgrade..."
   fi
 
   echo ""
