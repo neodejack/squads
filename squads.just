@@ -1,4 +1,4 @@
-list:
+list_recipes:
   @just --list squads --list-heading $'Squads related stuff\n' --list-prefix '■ '
 
 init:
@@ -19,3 +19,6 @@ upgrade:
     else \
       echo "No changes to commit"; \
     fi
+
+list:
+  tree squads/todo -L 1
