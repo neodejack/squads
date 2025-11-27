@@ -2,6 +2,7 @@
 import sys
 import shutil
 from pathlib import Path
+from git_utils import git_add, git_commit
 
 if len(sys.argv) < 2:
     print("Error: todo_name is required")
@@ -41,6 +42,12 @@ destination = done_dir / matched_file.name
 try:
     shutil.move(str(matched_file), str(destination))
     print(f"Moved {matched_file.name} to done/")
+
+    # Commit the moved file to git
+    # Stage both the old location (deletion) and new location (addition)
+    git_add(matched_file)  # Stage the deletion
+    git_add(destination)   # Stage the addition
+    git_commit(f"squads::done {todo_name}")
 except Exception as e:
     print(f"Error: Failed to move file: {e}")
     sys.exit(1)
