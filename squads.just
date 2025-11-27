@@ -13,4 +13,6 @@ done todo_name:
 
 upgrade:
   #!/usr/bin/env bash
-  bash <(curl -fsSL https://raw.githubusercontent.com/neodejack/squads/main/upgrade.sh)
+  bash <(curl -fsSL https://raw.githubusercontent.com/neodejack/squads/main/upgrade.sh) && \
+    git add squads.just hacks/ && \
+    git commit -m "squads::upgrade"
