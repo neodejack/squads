@@ -14,5 +14,8 @@ done todo_name:
 upgrade:
   #!/usr/bin/env bash
   bash <(curl -fsSL https://raw.githubusercontent.com/neodejack/squads/main/upgrade.sh) && \
-    git add squads.just hacks/ && \
-    git commit -m "squads::upgrade"
+    if ! git diff --quiet -- squads.just hacks/; then \
+      git add squads.just hacks/ && git commit -m "squads::upgrade"; \
+    else \
+      echo "No changes to commit"; \
+    fi
